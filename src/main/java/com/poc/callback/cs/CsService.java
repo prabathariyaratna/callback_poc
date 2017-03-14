@@ -1,4 +1,4 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 
 import javax.ws.rs.GET;
@@ -10,14 +10,14 @@ import java.util.concurrent.Semaphore;
 
 
 @Path("/services")
-public class CallbackService {
+public class CsService {
 
     @POST
     @Path("/callback")
     public Response callback(String value, @HeaderParam("callbackId") String callbackId) {
 
         ClientWorkerThread clientWorkerThread = new ClientWorkerThread(callbackId);
-        ThreadPool.getInstance().getExecutorService().execute(clientWorkerThread);
+        CsThreadPool.getInstance().getExecutorService().execute(clientWorkerThread);
         String output = "Received";
         return Response.status(200).entity(output).build();
 

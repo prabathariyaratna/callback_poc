@@ -1,4 +1,4 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -6,17 +6,17 @@ import java.util.concurrent.Executors;
 /**
  * Created by ahach on 13/03/2017.
  */
-public class ThreadPool {
+public class CsThreadPool {
 
-    private static ThreadPool instance = null;
+    private static CsThreadPool instance = null;
 
-    private ThreadPool() {
+    private CsThreadPool() {
 
     }
 
-    public static ThreadPool getInstance() {
+    public static CsThreadPool getInstance() {
         if(instance == null) {
-            instance = new ThreadPool();
+            instance = new CsThreadPool();
         }
 
         return instance;

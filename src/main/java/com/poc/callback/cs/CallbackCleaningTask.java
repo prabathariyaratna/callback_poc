@@ -1,4 +1,4 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

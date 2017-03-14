@@ -1,12 +1,12 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
-public class CallbackServer {
+public class CsServer {
 
     public static void main(String args[]) throws Exception {
-        ThreadPool.getInstance().getExecutorService().submit(new JettyServer());
+        CsThreadPool.getInstance().getExecutorService().submit(new JettyServer());
         startCallbackCleaningTask();
     }
 

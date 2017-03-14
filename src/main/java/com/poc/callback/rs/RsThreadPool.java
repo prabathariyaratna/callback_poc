@@ -1,4 +1,4 @@
-package com.poc.callback.server.service;
+package com.poc.callback.rs;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -6,17 +6,15 @@ import java.util.concurrent.Executors;
 /**
  * Created by ahach on 13/03/2017.
  */
-public class ThreadPool {
+public class RsThreadPool {
+    private static RsThreadPool instance = null;
 
-    private static ThreadPool instance = null;
-
-    private ThreadPool() {
-
+    private RsThreadPool() {
     }
 
-    public static ThreadPool getInstance() {
-        if(instance == null) {
-            instance = new ThreadPool();
+    public static RsThreadPool getInstance() {
+        if (instance == null) {
+            instance = new RsThreadPool();
         }
 
         return instance;

@@ -1,4 +1,4 @@
-package com.poc.callback.server.service;
+package com.poc.callback.cs;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -7,14 +7,21 @@ import org.eclipse.jetty.servlet.ServletHolder;
 /**
  * Created by ahach on 13/03/2017.
  */
-public class BackendServer {
+public class JettyServer implements Runnable {
 
-    public static void main(String args[]) throws Exception {
+    public void run() {
+        try {
+            startJettyServer();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    private static void startJettyServer()throws Exception {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
 
-        Server jettyServer = new Server(8090);
+        Server jettyServer = new Server(8091);
         jettyServer.setHandler(context);
 
         ServletHolder jerseyServlet = context.addServlet(
@@ -24,16 +31,13 @@ public class BackendServer {
         // Tells the Jersey Servlet which REST service/class to load.
         jerseyServlet.setInitParameter(
                 "jersey.config.server.provider.classnames",
-                UserService.class.getCanonicalName());
-
+                CsService.class.getCanonicalName());
         try {
             jettyServer.start();
+            System.out.println("======================= Cs Server Started ==========================");
             jettyServer.join();
         } finally {
             jettyServer.destroy();
         }
     }
-
-
-
 }

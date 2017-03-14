@@ -1,11 +1,4 @@
-package com.poc.callback.client;
-
-import com.poc.callback.util.Base64Util;
-import com.poc.callback.util.RestClient;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
+package com.poc.callback.cs;
 
 /**
  * Created by ahach on 10/03/2017.

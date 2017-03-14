@@ -1,4 +1,4 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 import com.poc.callback.util.Base64Util;
 import com.poc.callback.util.RestClient;
@@ -15,7 +15,7 @@ import java.util.concurrent.Semaphore;
 public class ServerWorkerThread {
 
     private Date createdTime;
-    private static String CALLBACK_URL = "http://localhost:8091/callback";
+    private static String CALLBACK_URL = "http://localhost:8091/services/callback";
     private static String ACTUAL_URL = "http://localhost:8090/users/123";
     private Semaphore semaphore = null;
     private boolean status = true;
@@ -57,13 +57,13 @@ public class ServerWorkerThread {
             if(response != null && response.getStatus() == 200) {
                 System.out.println("Lock acquired");
                 semaphore.acquire();
-                return response;
+                return Response.status(200).entity("OK").build();
             } else {
-                return Response.status(500).build();
+                return Response.status(500).entity("Fail").build();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return Response.status(500).build();
+            return Response.status(500).entity("Fail").build();
         }
     }
 

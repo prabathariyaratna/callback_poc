@@ -1,4 +1,4 @@
-package com.poc.callback.client;
+package com.poc.callback.cs;
 
 import java.util.HashMap;
 import java.util.Map;
